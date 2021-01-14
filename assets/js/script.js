@@ -3,7 +3,9 @@ let body = document.body;
 let startQuizButton = document.querySelector("#start-quiz-btn");
 let h1Header = document.querySelector("#start-quiz-header")
 let beginningPrompt = document.querySelector("#beginning-prompt")
+let time = document.querySelector('#time-remaining')
 
+let timeLeft;
 let question1;
 let question2;
 let question3;
@@ -21,11 +23,48 @@ let wrongAnswer;
 let initialsFormField;
 
 let score = 0;
-let time = 0
+
 
 ///Creating an array/object with the questions/answers?
+///create startTime function
+///create endTime function
+///create deleteUserScore function
+////create saveUserScore function
+///create view high scores page
+//create way to go back to main index page from view high scores page
+/// need to create a way to stop timer when all the questions are answered.
+
+let countdown = function () {
+    timeLeft = 75
+    time.textContent = timeLeft
+    
+    let timeInterval = setInterval(function() {
+        // As long as the `timeLeft` is greater than 1
+        if (timeLeft >= 1) {
+          // Set the `textContent` of `timerEl` to show the remaining seconds
+          time.textContent = timeLeft;
+          // Decrement `timeLeft` by 1
+          timeLeft--;
+        } else if (timeLeft === 0) {
+            time.textContent = timeLeft
+            window.alert('Sorry, you have run out of time! Please refresh the page to try again.')
+            clearInterval(timeInterval)
+        } else if (allDone()) {
+            clearInterval(timeInterval)
+        }
+      }, 1000);
+    
+   
+}
+
+
+
 
 let prompt1 = function () {
+
+    countdown()
+
+    
     question1 = document.createElement('h1')
     question1.textContent = "Commonly used data types do NOT Include:"
     h1Header.parentNode.replaceChild(question1, h1Header)
@@ -53,6 +92,7 @@ let prompt1 = function () {
         //wrongAnswer = document.createElement('h2')
        // wrongAnswer.textContent = 'Wrong!'
         //body.appendChild(wrongAnswer)
+        timeLeft -= 10
         prompt2()
         //wrongAnswer.remove()
     }
@@ -61,6 +101,7 @@ let prompt1 = function () {
        // wrongAnswer = document.createElement('h2')
         //wrongAnswer.textContent = 'Wrong!'
         //body.appendChild(wrongAnswer)
+        timeLeft -= 10
         prompt2()
     }
 
@@ -75,6 +116,7 @@ let prompt1 = function () {
        // wrongAnswer = document.createElement('h2')
        // wrongAnswer.textContent = 'Wrong!'
        // body.appendChild(wrongAnswer)
+       timeLeft -= 10
         prompt2()
     }
 }
@@ -92,10 +134,12 @@ let prompt2 = function () {
     button4.textContent = '4: Square Brackets'
 
     button1.onclick = function () {
+        timeLeft -= 10
         prompt3()
     }
     
     button2.onclick = function () {
+        timeLeft -= 10
         prompt3()
     }
 
@@ -104,6 +148,7 @@ let prompt2 = function () {
     }
 
     button4.onclick = function () {
+        timeLeft -= 10
         prompt3()
     }
 }
@@ -122,14 +167,17 @@ let prompt3 = function () {
      button4.textContent = '4: All of the above!'
  
      button1.onclick = function () {
+        timeLeft -= 10
          prompt4()
      }
      
      button2.onclick = function () {
+        timeLeft -= 10
          prompt4()
      }
  
      button3.onclick = function () {
+        timeLeft -= 10
          prompt4()
      }
  
@@ -149,10 +197,12 @@ let prompt3 = function () {
     button4.textContent = '4: Parenthesis'
 
     button1.onclick = function () {
+        timeLeft -= 10
         prompt5()
     }
     
     button2.onclick = function () {
+        timeLeft -= 10
         prompt5()
     }
 
@@ -161,6 +211,7 @@ let prompt3 = function () {
     }
 
     button4.onclick = function () {
+        timeLeft -= 10
         prompt5()
     }
  }
@@ -176,14 +227,17 @@ let prompt3 = function () {
     button4.textContent = '4: console log'
 
     button1.onclick = function () {
+        timeLeft -= 10
         allDone()
     }
     
     button2.onclick = function () {
+        timeLeft -= 10
         allDone()
     }
 
     button3.onclick = function () {
+        timeLeft -= 10
         allDone()
     }
 
@@ -193,6 +247,8 @@ let prompt3 = function () {
  }
 
  let allDone = function () {
+     time.textContent = timeLeft
+
      button1.remove()
      button2.remove()
      button3.remove()
@@ -202,7 +258,7 @@ let prompt3 = function () {
      question5.textContent = "All done!"
 
      let scoreP = document.createElement('p')
-     scoreP.textContent = `You have finished with a score of 100` ///need to adjust this to the proper score.
+     scoreP.textContent = `You have finished with a score of ${timeLeft}. Please try again!` ///need to adjust this to the proper score.
      body.appendChild(scoreP)
 
      initialsFormField = document.createElement('INPUT')
@@ -211,29 +267,9 @@ let prompt3 = function () {
      body.appendChild(initialsFormField)
  }
 
-let showNextQuestion = function () {
-
-}
-
-let showQuestion = function () {
-
-}
-
-let questions = [
-    {
-        question: 'Commonly used data types do NOT Include:',
-        answers: [
-            {text: '1: Strings', correct: false},
-            {text: '2: Booleans', corect: false},
-            {text: '3: Alerts', correct: true},
-            {text: '4: Numbers', correct: true}
-        ]
-    }
-]
-
-
 
 startQuizButton.addEventListener('click', prompt1)
+
 
 //startQuizButton.addEventListener("click", function () {
    // question1 = document.createElement('h1')

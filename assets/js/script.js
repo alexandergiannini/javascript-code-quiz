@@ -5,6 +5,8 @@ let h1Header = document.querySelector("#start-quiz-header")
 let beginningPrompt = document.querySelector("#beginning-prompt")
 let time = document.querySelector('#time-remaining')
 
+let main = document.querySelector('#main-content')
+
 let timeLeft;
 let question1;
 let question2;
@@ -23,6 +25,10 @@ let wrongAnswer;
 let initialsFormField;
 
 let score = 0;
+
+let buttonContent;
+
+
 
 
 
@@ -66,9 +72,13 @@ let prompt1 = function () {
 
     countdown()
 
+    buttonContent = document.createElement('div') ///
+    buttonContent.setAttribute('style', ' justify-content: center; padding-left: 700px;') ///justify content aligns it to the center, padded it to the left to appear more centered
+    body.appendChild(buttonContent) ///
     
     question1 = document.createElement('h1')
     question1.textContent = "Commonly used data types do NOT Include:"
+    question1.setAttribute('style', 'font-size:50px; padding-top: 90px')
     h1Header.parentNode.replaceChild(question1, h1Header)
 
     beginningPrompt.remove()
@@ -76,19 +86,23 @@ let prompt1 = function () {
 
     button1 = document.createElement('button')
     button1.textContent = '1. Strings'
-    body.appendChild(button1)
+    button1.setAttribute('style', 'text-align: center; background-color: rgb(79, 17, 138); color: white; font-size: 30px; padding-left: 50px; padding-right: 50px; display: block')
+    buttonContent.appendChild(button1) //// made changes
 
     button2 = document.createElement('button')
     button2.textContent = '2. Booleans'
-    body.appendChild(button2)
+    button2.setAttribute('style', 'text-align: center; background-color: rgb(79, 17, 138); color: white; font-size: 30px; padding-left: 50px; padding-right: 50px; display: block')
+    buttonContent.appendChild(button2) ///
 
     button3 = document.createElement('button')
     button3.textContent = '3. Alerts'
-    body.appendChild(button3)
+    button3.setAttribute('style', 'text-align: center; background-color: rgb(79, 17, 138); color: white; font-size: 30px; padding-left: 50px; padding-right: 50px; display: block')
+    buttonContent.appendChild(button3) ////
 
     button4 = document.createElement('button')
     button4.textContent = '4. Numbers'
-    body.appendChild(button4)
+    button4.setAttribute('style', 'text-align: center; background-color: rgb(79, 17, 138); color: white; font-size: 30px; padding-left: 50px; padding-right: 50px; display: block')
+    buttonContent.appendChild(button4) ////
 
     button1.onclick = function () {
         //wrongAnswer = document.createElement('h2')
@@ -128,6 +142,7 @@ let prompt2 = function () {
     //correctAnswer.remove()
     question2 = document.createElement('h1')
     question2.textContent = 'The condition of an if / else statment is enclosed with _____'
+    question2.setAttribute('style', 'font-size:50px; padding-top: 90px')
     question1.parentNode.replaceChild(question2, question1)
 
     button1.textContent = '1: Quotes'
@@ -161,6 +176,7 @@ let prompt3 = function () {
      //correctAnswer.remove()
      question3 = document.createElement('h1')
      question3.textContent = 'Arrays in Javascript can be used to store _____'
+     question3.setAttribute('style', 'font-size:50px; padding-top: 90px')
      question2.parentNode.replaceChild(question3, question2)
  
      button1.textContent = '1: Numbers and Strings'
@@ -191,6 +207,7 @@ let prompt3 = function () {
  let prompt4 = function () {
     question4 = document.createElement('h1')
     question4.textContent = 'String values must be enclosed within _____ when being assigned to variables'
+    question4.setAttribute('style', 'font-size:50px; padding-top: 90px')
     question3.parentNode.replaceChild(question4, question3)
 
     button1.textContent = '1: Commas'
@@ -221,6 +238,7 @@ let prompt3 = function () {
  let prompt5 = function () {
     question5 = document.createElement('h1')
     question5.textContent = 'A very useful tool during development and debugging for printing content to the debugger is _______'
+    question5.setAttribute('style', 'font-size:50px; padding-top: 90px')
     question4.parentNode.replaceChild(question5, question4)
 
     button1.textContent = '1: Javascript'
@@ -264,15 +282,22 @@ let prompt3 = function () {
 
      ////need to adjust this variable name later
      question5.textContent = "All done!"
+     question5.setAttribute('style', 'padding-right: 700px;')
 
      let scoreP = document.createElement('p')
      scoreP.textContent = `You have finished with a score of ${timeLeft}. Please try again!` 
+     scoreP.setAttribute('style', 'padding-left: 460px;')
      body.appendChild(scoreP)
 
+     let formContent = document.createElement('div')
+     formContent.setAttribute('style', 'text-align: center; padding-right: 660px;')
+     body.appendChild(formContent)
+
      initialsFormField = document.createElement('INPUT')
-     initialsFormField.setAttribute("type", "text")
+     initialsFormField.setAttribute("type", "text;")
+     initialsFormField.setAttribute('style', '')
      initialsFormField.textContent = 'Submit'
-     body.appendChild(initialsFormField)
+     formContent.appendChild(initialsFormField)
  }
 
 

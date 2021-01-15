@@ -25,6 +25,8 @@ let initialsFormField;
 let score = 0;
 
 
+
+
 ///Creating an array/object with the questions/answers?
 ///create startTime function
 ///create endTime function
@@ -41,23 +43,23 @@ let countdown = function () {
     let timeInterval = setInterval(function() {
         // As long as the `timeLeft` is greater than 1
         if (timeLeft >= 1) {
-          // Set the `textContent` of `timerEl` to show the remaining seconds
           time.textContent = timeLeft;
-          // Decrement `timeLeft` by 1
           timeLeft--;
         } else if (timeLeft === 0) {
             time.textContent = timeLeft
             window.alert('Sorry, you have run out of time! Please refresh the page to try again.')
             clearInterval(timeInterval)
-        } else if (allDone()) {
-            clearInterval(timeInterval)
-        }
+            //allDone()//// need to create a function to take me allDone() when the timer runs out while im still completing the quiz.
+        } 
       }, 1000);
     
    
 }
 
 
+let stopInterval = function () {
+    clearInterval(countdown)
+}
 
 
 let prompt1 = function () {
@@ -249,6 +251,12 @@ let prompt3 = function () {
  let allDone = function () {
      time.textContent = timeLeft
 
+     
+
+     if (timeLeft < 0) { /// may need to adjust this if statement
+         timeLeft = 0
+     }
+
      button1.remove()
      button2.remove()
      button3.remove()
@@ -258,7 +266,7 @@ let prompt3 = function () {
      question5.textContent = "All done!"
 
      let scoreP = document.createElement('p')
-     scoreP.textContent = `You have finished with a score of ${timeLeft}. Please try again!` ///need to adjust this to the proper score.
+     scoreP.textContent = `You have finished with a score of ${timeLeft}. Please try again!` 
      body.appendChild(scoreP)
 
      initialsFormField = document.createElement('INPUT')

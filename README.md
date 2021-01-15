@@ -4,4 +4,4 @@
 
 # The URL for the deployed application is:
 
-# The Screenshot displaying the preview for this application is : 
+# The Screenshot displaying the preview for this application is: https://alexandergiannini.github.io/javascript-code-quiz/

@@ -1,3 +1,40 @@
 #view-score {
     color: rgb(180, 82, 180)
 }
+
+li {
+    display: inline-flex;
+}
+
+#time-remaining {
+    padding-left: 1400px;
+}
+
+
+
+#start-quiz-header {
+    text-align: center;
+    padding-top: 90px;
+    font-size: 50px; 
+}
+
+#beginning-prompt {
+    text-align: center;
+    font-size: 30px;
+    padding-left: 250px; 
+    padding-right: 250px; 
+}
+
+#start-quiz-btn {
+    background-color: rgb(79, 17, 138);
+    margin: auto;
+    color: white; 
+    font-size: 30px;
+    padding-left: 50px; 
+    padding-right: 50px;
+}
+
+main {
+    text-align: center; 
+    
+}

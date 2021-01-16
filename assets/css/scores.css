@@ -1,0 +1,18 @@
+h1 {
+    text-align: center; 
+    padding-top: 150px; 
+}
+
+.high-scores-labels {
+    text-align: center
+}
+
+.btns {
+    text-align: center;
+    padding-top: 20px; 
+}
+
+.btn {
+    background-color: rgb(79, 17, 138); 
+    color: white;
+}

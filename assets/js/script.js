@@ -30,15 +30,14 @@ let score = 0;
 
 let buttonContent;
 
-let allCompleted = false
+let allCompleted;
+
+let myName 
 
 
 
 
 
-
-///Creating an array/object with the questions/answers?
-///create startTime function
 ///create endTime function
 ///create deleteUserScore function
 ////create saveUserScore function
@@ -52,20 +51,37 @@ let countdown = function () {
     
     let timeInterval = setInterval(function() {
         // As long as the `timeLeft` is greater than 1
-        if (timeLeft >= 1) {
-          time.textContent = timeLeft;
-          timeLeft--;
+        if (timeLeft >= 1 && allCompleted === true) {
+            clearInterval(timeInterval)
         } else if (timeLeft === 0) {
             time.textContent = timeLeft
             window.alert('Sorry, you have run out of time! Please refresh the page to try again.')
             clearInterval(timeInterval)
             //// need to create a function to take me allDone() when the timer runs out while im still completing the quiz.
-        } else if (allCompleted === true) {
+        } else if (timeLeft >=1) {
+            time.textContent = timeLeft;
+            timeLeft--;
+        } else if (timeLeft < 0) {
+            time.textContent = 0
+            window.alert('Sorry, you have run out of time! Please refresh the page to try again.')
             clearInterval(timeInterval)
         }
       }, 1000);
     
    
+}
+
+let saveScore = function () {
+    localStorage.setItem(myName, timeLeft);
+}
+
+//
+let loadScores = function () {
+    let allScores = localStorage.getItem(myName)
+}
+
+let clearScores = function () {
+
 }
 
 
@@ -88,7 +104,7 @@ let prompt1 = function () {
     button1 = document.createElement('button')
     button1.textContent = '1. Strings'
     button1.setAttribute('style', 'text-align: center; background-color: rgb(79, 17, 138); color: white; font-size: 30px; padding-left: 50px; padding-right: 50px; display: block')
-    buttonContent.appendChild(button1) //// made changes
+    buttonContent.appendChild(button1) //// made changes PADDING BOTTOM ^^^
 
     button2 = document.createElement('button')
     button2.textContent = '2. Booleans'
@@ -272,6 +288,7 @@ let prompt3 = function () {
 
      //stopInterval(countdown)
      allCompleted = true
+
      console.log(allCompleted)
 
      
@@ -320,8 +337,9 @@ let prompt3 = function () {
 
      initialsFormSubmit.onclick = function (event) {
         event.preventDefault()
-        let myName = initialsFormPrompt.value
-        console.log(myName, timeLeft)
+        myName = initialsFormPrompt.value
+        saveScore()
+        window.location.href = "highscores.html"
      }
  }
 

@@ -23,10 +23,14 @@ let correctAnswer;
 let wrongAnswer;
 
 let initialsFormField;
+let initialsFormPrompt;
+let initialsFormSubmit;
 
 let score = 0;
 
 let buttonContent;
+
+let allCompleted = false
 
 
 
@@ -55,16 +59,13 @@ let countdown = function () {
             time.textContent = timeLeft
             window.alert('Sorry, you have run out of time! Please refresh the page to try again.')
             clearInterval(timeInterval)
-            //allDone()//// need to create a function to take me allDone() when the timer runs out while im still completing the quiz.
-        } 
+            //// need to create a function to take me allDone() when the timer runs out while im still completing the quiz.
+        } else if (allCompleted === true) {
+            clearInterval(timeInterval)
+        }
       }, 1000);
     
    
-}
-
-
-let stopInterval = function () {
-    clearInterval(countdown)
 }
 
 
@@ -73,7 +74,7 @@ let prompt1 = function () {
     countdown()
 
     buttonContent = document.createElement('div') ///
-    buttonContent.setAttribute('style', ' justify-content: center; padding-left: 700px;') ///justify content aligns it to the center, padded it to the left to appear more centered
+    buttonContent.setAttribute('style', ' justify-content: center; padding-left: 300px;') ///justify content aligns it to the center, padded it to the left to appear more centered
     body.appendChild(buttonContent) ///
     
     question1 = document.createElement('h1')
@@ -269,10 +270,15 @@ let prompt3 = function () {
  let allDone = function () {
      time.textContent = timeLeft
 
+     //stopInterval(countdown)
+     allCompleted = true
+     console.log(allCompleted)
+
      
 
      if (timeLeft < 0) { /// may need to adjust this if statement
          timeLeft = 0
+         time.remove() ///if timer value is below 0
      }
 
      button1.remove()
@@ -282,49 +288,45 @@ let prompt3 = function () {
 
      ////need to adjust this variable name later
      question5.textContent = "All done!"
-     question5.setAttribute('style', 'padding-right: 700px;')
+     question5.setAttribute('style', 'padding-right: 700px; font-size: 40px')
 
      let scoreP = document.createElement('p')
      scoreP.textContent = `You have finished with a score of ${timeLeft}. Please try again!` 
-     scoreP.setAttribute('style', 'padding-left: 460px;')
+     scoreP.setAttribute('style', 'padding-left: 300px; font-size: 30px; display: flex')
      body.appendChild(scoreP)
 
      let formContent = document.createElement('div')
-     formContent.setAttribute('style', 'text-align: center; padding-right: 660px;')
+     formContent.setAttribute('style', 'padding-right: 600px; text-align: center; ') /// may need to adjust this later
      body.appendChild(formContent)
 
-     initialsFormField = document.createElement('INPUT')
+     initialsFormField = document.createElement('form')
      initialsFormField.setAttribute("type", "text;")
      initialsFormField.setAttribute('style', '')
-     initialsFormField.textContent = 'Submit'
+     initialsFormField.textContent = 'Enter Initials:'
      formContent.appendChild(initialsFormField)
+
+     let initialsFormLabel = document.createElement('label')
+     initialsFormLabel.setAttribute('type', 'text')
+     initialsFormField.appendChild(initialsFormLabel)
+
+     initialsFormPrompt = document.createElement('input')
+     initialsFormPrompt.setAttribute('type', 'text')
+     initialsFormField.appendChild(initialsFormPrompt)
+
+     initialsFormSubmit = document.createElement('input')
+     initialsFormSubmit.setAttribute('type', 'submit')
+     initialsFormSubmit.setAttribute('style', 'background-color: rgb(79, 17, 138); color: white;')
+     initialsFormField.appendChild(initialsFormSubmit)
+
+     initialsFormSubmit.onclick = function (event) {
+        event.preventDefault()
+        let myName = initialsFormPrompt.value
+        console.log(myName, timeLeft)
+     }
  }
 
 
 startQuizButton.addEventListener('click', prompt1)
 
+///
 
-//startQuizButton.addEventListener("click", function () {
-   // question1 = document.createElement('h1')
-   // question1.textContent = "Commonly used data types do NOT Include:"
-   // h1Header.parentNode.replaceChild(question1, h1Header)
-
-   // beginningPrompt.remove()
-
-   // button1 = document.createElement('button')
-    //button1.textContent = '1. Strings'
-    //startQuizButton.parentNode.replaceChild(button1, startQuizButton)
-
-   // button2 = document.createElement('button')
-   // button2.textContent = '2. Booleans'
-   // body.appendChild(button2)
-
-  //  button3 = document.createElement('button')
-  //  button3.textContent = '3. Alerts'
-   // body.appendChild(button3)
-
-   // button4 = document.createElement('button')
-   // button4.textContent = '4. Numbers'
-   // body.appendChild(button4)
-
-//})

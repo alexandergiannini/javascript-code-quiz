@@ -1,31 +1,27 @@
-let goBack = document.querySelector('#go-back')
+//global variables listed below for future reference
 
-let clearHighScores = document.querySelector('#clear-high-scores')
+let goBack = document.querySelector('#go-back');
 
-let listOfScores = document.querySelector('#high-scores-list')
+let clearHighScores = document.querySelector('#clear-high-scores');
 
+let listOfScores = document.querySelector('#high-scores-list');
+
+///Event listener for when the user wants to return to the index page from the highscore page
 goBack.addEventListener("click", function () {
-    window.location.href = "index.html"
+    window.location.href = "index.html";
 })
 
+////function for loading the highscores/names on the highscore page
 let loadScores = function () {
-    let scores = JSON.stringify(localStorage)
-    return scores.replace(/[{}]/gi, '' )
-    
+    let scores = JSON.stringify(localStorage);
+    return scores.replace(/[{}]/gi, '');
 }
-///JSON.parse(localStorage.getItem("myName"))
 
+///function to clear the high scores internally and externally
 clearHighScores.onclick = function () {
   localStorage.clear();
-  listOfScores.value = ''
+  listOfScores.value = '';
 }
 
-listOfScores.value = loadScores()
-
-
-//let myScores = scores.split('')
-//return myScores.filter(function (x) {
-  ///  if (x != "{" && x != "}" && x != ":") {
-    ///    return x
-  ///  }
-///})
+////the input bar should reflect the loaded scores
+listOfScores.value = loadScores();

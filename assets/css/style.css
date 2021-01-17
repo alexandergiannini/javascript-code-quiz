@@ -38,3 +38,7 @@ main {
     text-align: center; 
     /*this how the button aligns to the center*/
 }
+
+a {
+    text-decoration: none;
+}

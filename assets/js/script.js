@@ -7,6 +7,8 @@ let time = document.querySelector('#time-remaining')
 
 let main = document.querySelector('#main-content')
 
+
+
 let timeLeft;
 let question1;
 let question2;
@@ -42,8 +44,7 @@ let myName
 ///create deleteUserScore function
 ////create saveUserScore function
 ///create view high scores page
-//create way to go back to main index page from view high scores page
-/// need to create a way to stop timer when all the questions are answered.
+
 
 let countdown = function () {
     timeLeft = 75
@@ -72,17 +73,18 @@ let countdown = function () {
 }
 
 let saveScore = function () {
-    localStorage.setItem(myName, timeLeft);
+    localStorage.setItem(myName, JSON.stringify(timeLeft)); /// not sure if json.stringify is needed myName should be variable or string
+    //localStorage.setItem(myName, timeLeft)
 }
 
 //
-let loadScores = function () {
-    let allScores = localStorage.getItem(myName)
-}
+//let loadScores = function () {
+   // let allScores = localStorage.getItem(myName)
+//}
 
-let clearScores = function () {
-
-}
+//let clearScores = function () {
+///
+//}
 
 
 let prompt1 = function () {
@@ -346,5 +348,13 @@ let prompt3 = function () {
 
 startQuizButton.addEventListener('click', prompt1)
 
+//goBack.addEventListener('click', function () {
+    //console.log('Hi')
+    //window.location.href = "index.html"
+///})
+
 ///
 
+//goBack.onclick = function () {
+  ///  console.log('Hi')
+//}

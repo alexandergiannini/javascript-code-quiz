@@ -1,6 +1,5 @@
 ///Listing all global variables below in order to reference them later
 
-
 let body = document.body;
 
 let startQuizButton = document.querySelector("#start-quiz-btn");
@@ -9,8 +8,6 @@ let beginningPrompt = document.querySelector("#beginning-prompt");
 let time = document.querySelector('#time-remaining');
 
 let main = document.querySelector('#main-content');
-
-
 
 let timeLeft;
 let question1;
@@ -23,9 +20,6 @@ let button1;
 let button2;
 let button3;
 let button4;
-
-let correctAnswer;
-let wrongAnswer;
 
 let initialsFormField;
 let initialsFormPrompt;
@@ -64,8 +58,7 @@ let countdown = function () {
 }
 
 let saveScore = function () {
-    localStorage.setItem(myName, JSON.stringify(timeLeft)); /// not sure if json.stringify is needed myName should be variable or string
-    //localStorage.setItem(myName, timeLeft)
+    localStorage.setItem(myName, JSON.stringify(timeLeft));
 }
 
 ///Prompt one represents the first question, along with their answers. The countdown function is called to start when the user starts the quiz
@@ -133,7 +126,7 @@ let prompt1 = function () {
 ///function for the second question with their answers
 let prompt2 = function () {
     question2 = document.createElement('h1');
-    question2.textContent = 'The condition of an if / else statment is enclosed with _____';
+    question2.textContent = 'The condition of an if / else statement is enclosed with _____.';
     question2.setAttribute('style', 'font-size:50px; padding-top: 90px');
     question1.parentNode.replaceChild(question2, question1);
 
@@ -169,7 +162,7 @@ let prompt2 = function () {
 ///prompt 3 function represents the third question with their answers
 let prompt3 = function () {
      question3 = document.createElement('h1');
-     question3.textContent = 'Arrays in Javascript can be used to store _____';
+     question3.textContent = 'Arrays in Javascript can be used to store _____.';
      question3.setAttribute('style', 'font-size:50px; padding-top: 90px');
      question2.parentNode.replaceChild(question3, question2);
  
@@ -205,7 +198,7 @@ let prompt3 = function () {
  //prompt 4 function is the 4th question with their answers
  let prompt4 = function () {
     question4 = document.createElement('h1');
-    question4.textContent = 'String values must be enclosed within _____ when being assigned to variables';
+    question4.textContent = 'String values must be enclosed within _____ when being assigned to variables.';
     question4.setAttribute('style', 'font-size:50px; padding-top: 90px');
     question3.parentNode.replaceChild(question4, question3);
 
@@ -241,7 +234,7 @@ let prompt3 = function () {
  ///5th prompt with its question/answers
  let prompt5 = function () {
     question5 = document.createElement('h1');
-    question5.textContent = 'A very useful tool during development and debugging for printing content to the debugger is _______';
+    question5.textContent = 'A very useful tool during development and debugging for printing content to the debugger is _______.';
     question5.setAttribute('style', 'font-size:50px; padding-top: 90px');
     question4.parentNode.replaceChild(question5, question4);
 
@@ -331,6 +324,6 @@ let prompt3 = function () {
      }
  }
 
-///event Listenet for the start of the quiz
+///event Listener for the start of the quiz
 startQuizButton.addEventListener('click', prompt1)
 
